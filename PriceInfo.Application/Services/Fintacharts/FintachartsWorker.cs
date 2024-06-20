@@ -15,19 +15,19 @@ namespace PriceInfo.Application.Services.Fintacharts
     public class FintachartsWorker : BackgroundService
     {
         private readonly IFintachartsApiService _fintachartsService;
-        private readonly IServiceScopeFactory serviceScopeFactory;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
 
         public FintachartsWorker(
             IFintachartsApiService fintachartsService,
             IServiceScopeFactory serviceScopeFactory)
         {
             _fintachartsService = fintachartsService;
-            this.serviceScopeFactory = serviceScopeFactory;
+            _serviceScopeFactory = serviceScopeFactory;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            using (var scope = serviceScopeFactory.CreateScope())
+            using (var scope = _serviceScopeFactory.CreateScope())
             {
                 var dbContext = scope.ServiceProvider.GetService<AppDbContext>();
                 var assets = await dbContext!.Assets.ToListAsync();
