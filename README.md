@@ -20,9 +20,9 @@ Gets price information for specific asset(s) separated by comma. E.g. api/price/
 
 <code>docker images</code>
 
-беремо image id для priceinfoapi и вставляємо замість <image id>
+беремо image id для priceinfoapi и вставляємо замість &lt;image id&gt;
 
-<code>docker run -p 8080:8080 <image id></code>
+<code>docker run -p 8080:8080 &lt;image id&gt;</code>
 
 in browser try http://localhost:8080/api/assets
 
