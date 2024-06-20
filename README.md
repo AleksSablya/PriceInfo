@@ -27,7 +27,7 @@ Gets price information for specific asset(s) separated by comma. E.g. api/price/
 in browser try http://localhost:8080/api/assets
 
 # Пояснення
-В розробци була задіяна InMemoryDatabase щоб не використовувати реальну БД з міграціями.
+В розробці була задіяна InMemoryDatabase щоб не використовувати реальну БД з міграціями.
 В базі данних всього одна таблиця Assets куди заносяться данні з запиту до Fintatechs API api/instruments/v1/instruments. Ця діє виконується у BackgroundService після завантаження API.
 Збереженны данні з таблиці відображаюсться точкою api/assets.
 Для отримання данних по цінах вікористовується запит до Web-Socket API. Ці данні в БД не зберігаються. Якщо буде потреба, то можу доробити зберігання до бази данних.
