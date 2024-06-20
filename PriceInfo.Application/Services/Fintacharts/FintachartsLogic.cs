@@ -27,6 +27,10 @@ namespace PriceInfo.Application.Services.Fintacharts
             foreach (var asset in assetsList)
             {
                 var symbol = NameHelper.RemoveAllNonLetterChars(asset);
+                if (string.IsNullOrWhiteSpace(symbol))
+                {
+                    continue;
+                }
                 var instrument = instruments.Find(x => x.Symbol.Equals(symbol, StringComparison.InvariantCultureIgnoreCase));
                 if (instrument != null)
                 {
