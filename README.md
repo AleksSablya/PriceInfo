@@ -10,17 +10,24 @@ Gets list of supported market assets.
 Gets price information for specific asset(s) separated by comma. E.g. api/price/EURUSD,EURGBP,GBPAUD
 
 
-To run API from docker
+# To run API via Docker
+
 збираємо image
-> docker compose up
+
+<code>docker compose up</code>
+
 переглянути створенні images
-> docker images
+
+<code>docker images</code>
+
 беремо image id для priceinfoapi и вставляємо замість <image id>
-> docker run -p 8080:8080 <image id>
+
+<code>docker run -p 8080:8080 <image id></code>
 
 in browser try http://localhost:8080/api/assets
 
-Пояснення. 
+# Пояснення
 В розробци була задіяна InMemoryDatabase щоб не використовувати реальну БД з міграціями.
-В базі данних всього одна таблиця Assets куди заносяться данні з запиту до Fintatechs API api/instruments/v1/instruments. Ці данні з таблиці відображаюсться точкою api/assets
-Для отримання данних по цінах вікористовуеться запит до Web-Socket API. Ці данні я в БД не зберігаю. Якщо буде треба, то можу доробити зберігання до бази данних.
+В базі данних всього одна таблиця Assets куди заносяться данні з запиту до Fintatechs API api/instruments/v1/instruments. Ця діє виконується у BackgroundService після завантаження API.
+Збереженны данні з таблиці відображаюсться точкою api/assets.
+Для отримання данних по цінах вікористовується запит до Web-Socket API. Ці данні в БД не зберігаються. Якщо буде потреба, то можу доробити зберігання до бази данних.
